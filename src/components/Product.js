@@ -1,16 +1,16 @@
-import "../Styles/Product.css";
+import "../Styles/product.css";
 import { useState } from "react";
 
 function Products() {
-  // 🧠 State for form
+  
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [category, setCategory] = useState("");
 
-  // 🧠 State for product list
+
   const [products, setProducts] = useState([]);
 
-  // ➕ Add product function
+
   const handleAddProduct = () => {
     if (!name || !quantity || !category) {
       alert("Please fill all fields");
@@ -32,7 +32,7 @@ function Products() {
     setCategory("");
   };
 
-  // 🔥 Status logic
+
   const getStatus = (qty) => {
     if (qty === 0) return "out";
     if (qty < 5) return "low";

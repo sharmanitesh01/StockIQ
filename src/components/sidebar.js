@@ -1,36 +1,35 @@
 import "../Styles/sidebar.css";
-import { FaChartBar, FaBoxOpen, FaWarehouse, FaFileAlt, FaCog } from "react-icons/fa";
+import {
+  FaChartBar,
+  FaBoxOpen,
+  FaWarehouse,
+  FaFileAlt,
+  FaCog,
+} from "react-icons/fa";
 
-function Sidebar({ setPage }) {
+function Sidebar({ setPage, activePage }) {
+  const menuItems = [
+    { key: "dashboard", icon: <FaChartBar className="icon" />, label: "Dashboard" },
+    { key: "products", icon: <FaBoxOpen className="icon" />, label: "Products" },
+    { key: "inventory", icon: <FaWarehouse className="icon" />, label: "Inventory" },
+    { key: "reports", icon: <FaFileAlt className="icon" />, label: "Reports" },
+    { key: "settings", icon: <FaCog className="icon" />, label: "Settings" },
+  ];
+
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">StockIQ</div>
-
       <nav className="sidebar-menu">
-        <div className="menu-item" onClick={() => setPage("dashboard")}>
-          <FaChartBar className="icon" />
-          Dashboard
-        </div>
-
-        <div className="menu-item" onClick={() => setPage("products")}>
-          <FaBoxOpen className="icon" />
-          Products
-        </div>
-
-        <div className="menu-item" onClick={() => setPage("inventory")}>
-          <FaWarehouse className="icon" />
-          Inventory
-        </div>
-
-        <div className="menu-item" onClick={() => setPage("reports")}>
-          <FaFileAlt className="icon" />
-          Reports
-        </div>
-
-        <div className="menu-item" onClick={() => setPage("settings")}>
-          <FaCog className="icon" />
-          Settings
-        </div>
+        {menuItems.map((item) => (
+          <div
+            key={item.key}
+            className={`menu-item ${activePage === item.key ? "active" : ""}`}
+            onClick={() => setPage(item.key)}
+          >
+            {item.icon}
+            <span>{item.label}</span>
+          </div>
+        ))}
       </nav>
     </aside>
   );

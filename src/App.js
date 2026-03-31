@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Sidebar from "./components/sidebar";
+import Sidebar from "./components/Sidebar";
 import Navbar from "./components/navbar";
 import Dashboard from "./components/dashboard";
 import Products from "./components/Product";
@@ -27,8 +27,8 @@ function App() {
 
   return (
     <>
-      <Sidebar setPage={setPage} />
-      <Navbar />
+      <Sidebar setPage={setPage} activePage={page} />
+      <Navbar page={page} />
       {renderPage()}
     </>
   );
